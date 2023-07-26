@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Home page</title>
+</head>
+<body>
+
+	<section class="banner2  justify-content-center align-items-center">
+
+		<div class="container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="new-card">
+					<div class="card-header text-center">
+						<h3>Create an Account</h3>
+					</div>
+					
+					<div th:if="${session.message}" th:classappend="${session.message.type}"  class="alert" role="alert">
+  						<h6 class="text-center" th:text="${session.message.content}"></h6>
+  						<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+					</div>
+					
+					<div class="card-body">
+
+						<form novalidate="novalidate" id="login-form" class="form" th:action="@{/do_register}" method="post" th:object="${user}"
+							>
+							
+							<div class="input-group form-group ">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i
+										class="fa-solid fa-user"></i></span>
+								</div>
+								
+								<input type="text" id="name" name="name" th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}"
+									th:value="${user.name}" required class="form-control" placeholder="Your Name">
+									
+								<div class="invalid-feedback"
+									th:each="e:${#fields.errors('name')}" th:text="${e}"></div>
+							</div>
+							
+							<div class="input-group form-group mt-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+								</div>
+								<input type="email" id="email" name="email" th:classappend="${#fields.hasErrors('email') ? 'is-invalid':''}"
+									th:value="${user.email}" required class="form-control" placeholder="Your Email Id">
+									
+								<div class="invalid-feedback"
+									th:each="e:${#fields.errors('email')}" th:text="${e}"></div>
+							</div>
+
+							<div class="input-group form-group mt-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input type="password" id="password" name="password"
+									class="form-control" placeholder="password">
+							</div>
+							
+							<div class="input-group form-group mt-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa-solid fa-pen"></i></span>
+								</div>
+								
+								<textarea class="form-control" name="about" id="about" rows="2" placeholder="Write something about yourself"></textarea>
+								
+							</div>
+							
+							<div class="row align-items-center remember">
+								<input name="agreement" type="checkbox">Agree Terms and Conditions
+							</div>
+
+							<div class="form-group text-center mt-3">
+								<button type="submit" class="btn login_btn">Submit</button>
+								<button type="reset" class="btn reset_btn btn-warning text-black ml-2" style="width: 100px;">Reset</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+</body>
+</html>

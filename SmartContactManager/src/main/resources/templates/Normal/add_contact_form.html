@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Home page</title>
+</head>
+<body>
+
+	<section class=" banner2 justify-content-center align-items-center">
+
+		<div class="container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="new-card-2">
+					<div class=" card-header text-center mt-2">
+						<h2>Add New Contact</h2>
+					</div>
+
+					<div class="card-body">
+					
+						<div th:if="${session.message}">
+							<div th:classappend="${'alert-'+session.message.type}" class="alert text-center" role="alert">
+  								<span th:text="${session.message.content}"></span>
+							</div>
+							<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+						</div>
+
+						<form action="" th:object="${contact}"
+							enctype="multipart/form-data" method="POST"
+							th:action="@{/user/process-contact}" class="mt-2">
+
+							<div class="input-group form-group ">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i
+										class="fa-regular fa-plus"></i></span>
+								</div>
+								<input type="text" id="firstName" name="name" required
+									class="form-control" placeholder="Your Name">
+							</div>
+
+							<div class="input-group form-group ">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i
+										class="fa-regular fa-plus"></i></span>
+								</div>
+								<input type="text" id="firstName" name="nickName" required
+									class="form-control" placeholder="Enter Nick Name">
+							</div>
+
+							<div class="input-group form-group ">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i
+										class="fa-solid fa-briefcase"></i></span>
+								</div>
+								<input type="text" id="work" name="work" required
+									class="form-control" placeholder="Enter work">
+							</div>
+
+							<div class="input-group form-group ">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i
+										class="fa-solid fa-envelope"></i></span>
+								</div>
+								<input type="email" id="email" name="email" required
+									class="form-control" placeholder="Enter Email">
+							</div>
+
+							<div class="input-group form-group ">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i
+										class="fa-solid fa-phone"></i></span>
+								</div>
+								<input type="text" id="phone" name="phone" required
+									class="form-control" placeholder="Enter Phone No.">
+							</div>
+
+							<div class="input-group form-group ">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i
+										class="fa-sharp fa-solid fa-comment"></i></span>
+								</div>
+								<textarea class="form-control" name="description" id="" rows="3"
+									placeholder="Enter Contact Description"></textarea>
+							</div>
+
+							<div class="custom-file ">
+
+								<input type="file" id="image" name="profileImage" />
+							</div>
+
+							<div class="form-group text-center mt-3">
+
+								<button type="submit" class="btn login_btn">Submit</button>
+								<button type="reset"
+									class="btn reset_btn btn-warning text-black ml-2"
+									style="width: 100px;">Reset</button>
+
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+
+
+
+	</section>
+
+</body>
+</html>

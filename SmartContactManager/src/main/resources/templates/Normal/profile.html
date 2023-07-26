@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Home page</title>
+</head>
+<body>
+	
+	<section>
+		
+		
+		<div class="container">
+			<div class="my-card">
+				<div class="card-body">
+					
+					<h1 class="text-center" th:text="${user.name}"></h1>
+					
+					<table class="table table-striped text-center mt-2">
+						  <thead>
+						    <tr>
+						      <th scope="col">#USER ID</th>
+						      <th scope="col"><span th:text="'SCM2023'+${user.id}"></span></th>
+						    </tr>
+						  </thead>
+						  
+						  <tbody>
+						    
+						    <tr>
+						      <th scope="row">Email ID</th>
+						      <td><span th:text="${user.email}"></span></td>
+						    </tr>
+						    
+						    <tr>
+						      <th scope="row">Role</th>
+						      <td><span th:text="${user.role}"></span></td>
+						    </tr>
+						    
+						    <tr>
+						      <th scope="row">Account Status</th>
+						      <td><span th:text="${user.enabled}"></span></td>
+						    </tr>
+						    
+						    <tr>
+						      <th scope="row">About</th>
+						      <td><span th:text="${user.about}"></span></td>
+						    </tr>
+						    
+						  </tbody>
+					</table>
+					
+					
+				</div>
+			</div>
+		</div>
+		
+		
+		
+	</section>
+	
+</body>
+</html>
